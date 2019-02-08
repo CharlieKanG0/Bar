@@ -15,11 +15,11 @@ class ExerciseTableViewCell: UITableViewCell {
     @IBOutlet weak var exerciseLabel: UILabel!
     
     // MARK: Properties
-    var exercises: Exercises? {
+    var exercises: ExerciseGroup? {
         didSet{
             guard let exercises = exercises else {return}
             
-            exerciseLabel.text = exercises.name
+            exerciseLabel.text = exercises.exerciseGroupName
             exerciseImageView.image = UIImage(named: exercises.exerciseImage!)
         }
     }

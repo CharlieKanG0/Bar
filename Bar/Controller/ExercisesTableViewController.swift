@@ -11,7 +11,7 @@ import UIKit
 class ExercisesTableViewController: UITableViewController {
     
     // MARK: Properties
-    var exercises = ExerciseList.generateExercisesData()
+    var exerciseGroup = defaultExerciseGroupList.generateExercisesData()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,7 @@ class ExercisesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return exercises.count
+        return exerciseGroup.count
     }
 
 
@@ -41,7 +41,7 @@ class ExercisesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ExerciseTableViewCell
 
         // Configure the cell...
-        let exercises = self.exercises[indexPath.row]
+        let exercises = self.exerciseGroup[indexPath.row]
         cell.exercises = exercises
 
         return cell
@@ -82,14 +82,17 @@ class ExercisesTableViewController: UITableViewController {
     }
     */
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-    }
-    */
+        if let destination = segue.destination as? IndividualExerciseTableViewController,
+            let indexPath = tableView.indexPathForSelectedRow {
+            destination.selectedExerciseGroup = exerciseGroup[indexPath.row] 
+        }
 
+    }
 }
