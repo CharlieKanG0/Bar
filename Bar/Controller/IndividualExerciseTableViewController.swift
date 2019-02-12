@@ -21,20 +21,16 @@ class IndividualExerciseTableViewController: UITableViewController {
     
     // value passed from ExerciseTableViewController 
     var selectedExerciseGroupName: String?
-    var exercises: [NSManagedObject] = []
+    // ExerciseData: NSManagedObject
+    var exercises: [ExerciseData] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = selectedExerciseGroupName
         
-        fetchData()
+        refresh()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
@@ -65,54 +61,20 @@ class IndividualExerciseTableViewController: UITableViewController {
 //        cell.textLabel?.text = individualExercises.value(forKey: "exerciseName") as? String
         return cell
     }
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     // passing the group of the new exercise that will be added
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-        if let destination = segue.destination as? NewExerciseViewController {
-            destination.newExercise?.groupName = selectedExerciseGroupName
-        }
-        
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        // Get the new view controller using segue.destination.
+//        // Pass the selected object to the new view controller.
+//        if let destination = segue.destination as? NewExerciseViewController {
+//            destination.newExercise?.groupName = selectedExerciseGroupName
+//        }
+//        
+//    }
 
 }
 
@@ -125,62 +87,39 @@ extension IndividualExerciseTableViewController {
         guard let newExerciseViewController = segue.source as? NewExerciseViewController,
             var newExercise = newExerciseViewController.newExercise else { return }
         
-        // add the new exercise to the array
-//        exercises.append(newExercise)
+        // set the group name of the exercise
         newExercise.groupName = selectedExerciseGroupName
-        saveData(individualExercise: newExercise)
+        addExercise(exercise: newExercise)
         
         // update the table view
         let indexPath = IndexPath(row: exercises.count - 1, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
     }
     
-    // add data
-    func saveData(individualExercise: IndividualExercise) {
+    // save data
+    func addExercise(exercise: IndividualExercise) {
+        // create a new managed object and insert it into the managed object context
+        let exerciseData = ExerciseData(entity: ExerciseData.entity(), insertInto: managedObjContext)
         
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        exerciseData.exerciseName = exercise.exerciseName
+        exerciseData.goalRecordReps = Int16(exercise.goalRecordReps!)
+        exerciseData.goalRecordSets = Int16(exercise.goalRecordSet!)
+        exerciseData.goalRecordWeight = Int16(exercise.goalRecordWeight!)
         
-        // insert a new managed object into a manged object context
-        // - default managed object context as a property of NSPersistentContainer in the application delegate 
-        let managedContext = appDelegate.persistentContainer.viewContext
+        // save attributes
+        appDelegate.saveContext()
         
-        // create a new managed object and insert it into the managed object context.
-        let entity = NSEntityDescription.entity(forEntityName: "ExerciseData", in: managedContext)!
-        
-        //
-        let newExercise = NSManagedObject(entity: entity, insertInto: managedContext)
-        
-        // set the attribute using the key-value coding
-        newExercise.setValue(individualExercise.groupName, forKey: "groupName")
-        newExercise.setValue(individualExercise.exerciseName, forKey: "exerciseName")
-        
-        // Commit changes to newExercise and save to disk by calling save on the managed object context.
-        do {
-            try managedContext.save()
-            exercises.append(newExercise)
-        } catch let error as NSError {
-            print("Could not save! NSError: \(error)")
-        }
+        // add new exercise to the array
+        exercises.append(exerciseData)
+
     }
     
     // fetch data
-    func fetchData() {
-        //1
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
+    func refresh() {
+        let fetchRequest = ExerciseData.fetchRequest() as NSFetchRequest<ExerciseData>
         
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
-        
-        // responsible for fetcing from core data
-        let fetchRequest =
-            NSFetchRequest<NSManagedObject>(entityName: "ExerciseData")
-        
-        // hand the fetch request over to the managed object
         do {
-            exercises = try managedContext.fetch(fetchRequest)
+            exercises = try managedObjContext.fetch(fetchRequest)
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
