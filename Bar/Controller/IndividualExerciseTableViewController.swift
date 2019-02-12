@@ -21,15 +21,20 @@ class IndividualExerciseTableViewController: UITableViewController {
     
     // value passed from ExerciseTableViewController 
     var selectedExerciseGroupName: String?
-    // ExerciseData: NSManagedObject
-    var exercises: [ExerciseData] = []
+    var exercises = [ExerciseData]()
+    var filteredExercises = [ExerciseData]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set the title of the current individual exercise view
         title = selectedExerciseGroupName
         
+        // fetch the exercise lists from core data
         refresh()
+        
+        // filter out the exercises that belongs to the current exercise group
+        filter(group: selectedExerciseGroupName!)
 
     }
 
@@ -42,7 +47,7 @@ class IndividualExerciseTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return exercises.count
+        return filteredExercises.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -50,16 +55,12 @@ class IndividualExerciseTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
 
         // Configure the cell...
-        let individualExercises = exercises[indexPath.row]
+        let individualExercises = filteredExercises[indexPath.row]
         
-//        if individualExercises.value(forKey: "groupName") as? String == selectedExerciseGroupName {
-//            cell.textLabel?.text = individualExercises.value(forKey: "exerciseName") as? String
-//        }
         cell.textLabel?.text = individualExercises.value(forKey: "exerciseName") as? String
-//        cell.textLabel?.text = individualExercise.exerciseName
-        // grab the attribute from the NSObject
-//        cell.textLabel?.text = individualExercises.value(forKey: "exerciseName") as? String
+
         return cell
+        
     }
 
 
@@ -73,7 +74,7 @@ class IndividualExerciseTableViewController: UITableViewController {
 //        if let destination = segue.destination as? NewExerciseViewController {
 //            destination.newExercise?.groupName = selectedExerciseGroupName
 //        }
-//        
+//
 //    }
 
 }
@@ -91,9 +92,13 @@ extension IndividualExerciseTableViewController {
         newExercise.groupName = selectedExerciseGroupName
         addExercise(exercise: newExercise)
         
+       // update the current group exercise list
+        filter(group: selectedExerciseGroupName!)
+        
         // update the table view
-        let indexPath = IndexPath(row: exercises.count - 1, section: 0)
+        let indexPath = IndexPath(row: filteredExercises.count - 1, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
+
     }
     
     // save data
@@ -101,6 +106,7 @@ extension IndividualExerciseTableViewController {
         // create a new managed object and insert it into the managed object context
         let exerciseData = ExerciseData(entity: ExerciseData.entity(), insertInto: managedObjContext)
         
+        exerciseData.groupName = exercise.groupName
         exerciseData.exerciseName = exercise.exerciseName
         exerciseData.goalRecordReps = Int16(exercise.goalRecordReps!)
         exerciseData.goalRecordSets = Int16(exercise.goalRecordSet!)
@@ -111,10 +117,10 @@ extension IndividualExerciseTableViewController {
         
         // add new exercise to the array
         exercises.append(exerciseData)
-
+        
     }
     
-    // fetch data
+    // fetch data - refresh the individual exercise table view
     func refresh() {
         let fetchRequest = ExerciseData.fetchRequest() as NSFetchRequest<ExerciseData>
         
@@ -122,6 +128,13 @@ extension IndividualExerciseTableViewController {
             exercises = try managedObjContext.fetch(fetchRequest)
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
+    
+    // filter exercises
+    func filter(group: String) {
+        filteredExercises = exercises.filter { (ex) -> Bool in
+            return (ex.groupName?.contains(group))!
         }
     }
 }

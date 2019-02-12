@@ -17,6 +17,7 @@ extension ExerciseData {
         return NSFetchRequest<ExerciseData>(entityName: "ExerciseData")
     }
 
+    @NSManaged public var groupName: String?
     @NSManaged public var exerciseName: String?
     @NSManaged public var goalRecordReps: Int16
     @NSManaged public var goalRecordSets: Int16
