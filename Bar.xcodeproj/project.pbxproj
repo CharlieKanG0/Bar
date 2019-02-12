@@ -10,6 +10,8 @@
 		221316732209074300E626E9 /* sampleLegExercises.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221316722209074300E626E9 /* sampleLegExercises.swift */; };
 		2213167522090A7E00E626E9 /* IndividualExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2213167422090A7E00E626E9 /* IndividualExercise.swift */; };
 		2213167722091BA100E626E9 /* IndividualExerciseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2213167622091BA100E626E9 /* IndividualExerciseTableViewController.swift */; };
+		2239CA9922113D38005F5C37 /* ExerciseData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2239CA9722113D38005F5C37 /* ExerciseData+CoreDataClass.swift */; };
+		2239CA9A22113D38005F5C37 /* ExerciseData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2239CA9822113D38005F5C37 /* ExerciseData+CoreDataProperties.swift */; };
 		22698B64220AB5E0001AE45E /* NewExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22698B63220AB5E0001AE45E /* NewExerciseViewController.swift */; };
 		22BACC7F2207F5E800973987 /* ExercisesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BACC7E2207F5E800973987 /* ExercisesTableViewController.swift */; };
 		22BACC852207FC9D00973987 /* ExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BACC842207FC9D00973987 /* ExerciseTableViewCell.swift */; };
@@ -46,6 +48,8 @@
 		221316722209074300E626E9 /* sampleLegExercises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sampleLegExercises.swift; sourceTree = "<group>"; };
 		2213167422090A7E00E626E9 /* IndividualExercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualExercise.swift; sourceTree = "<group>"; };
 		2213167622091BA100E626E9 /* IndividualExerciseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualExerciseTableViewController.swift; sourceTree = "<group>"; };
+		2239CA9722113D38005F5C37 /* ExerciseData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciseData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2239CA9822113D38005F5C37 /* ExerciseData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciseData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		22698B63220AB5E0001AE45E /* NewExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExerciseViewController.swift; sourceTree = "<group>"; };
 		22BACC7E2207F5E800973987 /* ExercisesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesTableViewController.swift; sourceTree = "<group>"; };
 		22BACC842207FC9D00973987 /* ExerciseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewCell.swift; sourceTree = "<group>"; };
@@ -92,6 +96,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2239CA9222113A34005F5C37 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				2239CA9722113D38005F5C37 /* ExerciseData+CoreDataClass.swift */,
+				2239CA9822113D38005F5C37 /* ExerciseData+CoreDataProperties.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		22E470AD2206CB2D00C23646 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +130,7 @@
 			children = (
 				22E470C32206CB2E00C23646 /* Assets.xcassets */,
 				22E470B92206CB2D00C23646 /* AppDelegate.swift */,
+				2239CA9222113A34005F5C37 /* Data */,
 				22E470EC2206CB7500C23646 /* Model */,
 				22E470EB2206CB6B00C23646 /* Controller */,
 				22E470EA2206CB5D00C23646 /* View */,
@@ -157,9 +171,9 @@
 			isa = PBXGroup;
 			children = (
 				22BACC7E2207F5E800973987 /* ExercisesTableViewController.swift */,
-				22BACC8A22084A2D00973987 /* WorkoutTableViewController.swift */,
 				2213167622091BA100E626E9 /* IndividualExerciseTableViewController.swift */,
 				22698B63220AB5E0001AE45E /* NewExerciseViewController.swift */,
+				22BACC8A22084A2D00973987 /* WorkoutTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -312,7 +326,9 @@
 				22BACC89220808E800973987 /* ExerciseGroup.swift in Sources */,
 				22BACC852207FC9D00973987 /* ExerciseTableViewCell.swift in Sources */,
 				22BACC7F2207F5E800973987 /* ExercisesTableViewController.swift in Sources */,
+				2239CA9A22113D38005F5C37 /* ExerciseData+CoreDataProperties.swift in Sources */,
 				22BACC872208067B00973987 /* defaultExerciseGroupList.swift in Sources */,
+				2239CA9922113D38005F5C37 /* ExerciseData+CoreDataClass.swift in Sources */,
 				221316732209074300E626E9 /* sampleLegExercises.swift in Sources */,
 				22BACC8B22084A2D00973987 /* WorkoutTableViewController.swift in Sources */,
 				2213167722091BA100E626E9 /* IndividualExerciseTableViewController.swift in Sources */,

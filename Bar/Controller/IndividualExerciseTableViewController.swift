@@ -12,15 +12,21 @@ import CoreData
 class IndividualExerciseTableViewController: UITableViewController {
     
     // MARK: Properties
-    var selectedExerciseGroup: ExerciseGroup!
-//    var individualExercises = sampleLegExercises.generateLegExercisesData()
-//    var exercises: [IndividualExercise] = []
+    
+    // AppDelegate to access persistentContainer and saveContext method
+    private let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    // manged object context to insert managed objects
+    // default managed object context as a property of NSPersistentContainer in the application delegate
+    private let managedObjContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    // value passed from ExerciseTableViewController 
+    var selectedExerciseGroupName: String?
     var exercises: [NSManagedObject] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = selectedExerciseGroup.exerciseGroupName
+        title = selectedExerciseGroupName
         
         fetchData()
 
@@ -50,9 +56,10 @@ class IndividualExerciseTableViewController: UITableViewController {
         // Configure the cell...
         let individualExercises = exercises[indexPath.row]
         
-        if individualExercises.value(forKey: "groupName") as? String == selectedExerciseGroup.exerciseGroupName {
-            cell.textLabel?.text = individualExercises.value(forKey: "exerciseName") as? String
-        }
+//        if individualExercises.value(forKey: "groupName") as? String == selectedExerciseGroupName {
+//            cell.textLabel?.text = individualExercises.value(forKey: "exerciseName") as? String
+//        }
+        cell.textLabel?.text = individualExercises.value(forKey: "exerciseName") as? String
 //        cell.textLabel?.text = individualExercise.exerciseName
         // grab the attribute from the NSObject
 //        cell.textLabel?.text = individualExercises.value(forKey: "exerciseName") as? String
@@ -94,22 +101,15 @@ class IndividualExerciseTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     // passing the group of the new exercise that will be added
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if let destination = segue.destination as? NewExerciseViewController {
-            destination.newExercise?.groupName = selectedExerciseGroup.exerciseGroupName
+            destination.newExercise?.groupName = selectedExerciseGroupName
         }
         
     }
@@ -127,7 +127,7 @@ extension IndividualExerciseTableViewController {
         
         // add the new exercise to the array
 //        exercises.append(newExercise)
-        newExercise.groupName = selectedExerciseGroup.exerciseGroupName
+        newExercise.groupName = selectedExerciseGroupName
         saveData(individualExercise: newExercise)
         
         // update the table view

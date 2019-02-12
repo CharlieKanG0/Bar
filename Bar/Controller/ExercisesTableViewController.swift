@@ -91,7 +91,8 @@ class ExercisesTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
         if let destination = segue.destination as? IndividualExerciseTableViewController,
             let indexPath = tableView.indexPathForSelectedRow {
-            destination.selectedExerciseGroup = exerciseGroup[indexPath.row] 
+            destination.selectedExerciseGroupName = exerciseGroup[indexPath.row].exerciseGroupName
+            //destination.selectedExerciseGroup = exerciseGroup[indexPath.row] 
         }
 
     }
