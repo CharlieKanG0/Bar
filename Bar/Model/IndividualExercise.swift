@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
 struct IndividualExercise {
     // MARK: - Properties
     var groupName: String?
     var exerciseName: String?
-//    var exerciseImage: String?
+
     
 //    var lastRecordWeight: Int
 //    var lastRecordSet: Int
@@ -20,5 +21,6 @@ struct IndividualExercise {
     var goalRecordWeight: Int?
     var goalRecordSet: Int?
     var goalRecordReps: Int?
+    var exerciseImage: UIImage?
 }
 

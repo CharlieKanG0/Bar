@@ -134,6 +134,9 @@ extension IndividualExerciseTableViewController {
         exerciseData.goalRecordReps = Int16(exercise.goalRecordReps!)
         exerciseData.goalRecordSets = Int16(exercise.goalRecordSet!)
         exerciseData.goalRecordWeight = Int16(exercise.goalRecordWeight!)
+        if let imageData = exercise.exerciseImage?.pngData() as NSData? {
+            exerciseData.exerciseImage = imageData
+        }
         
         // save attributes
         appDelegate.saveContext()

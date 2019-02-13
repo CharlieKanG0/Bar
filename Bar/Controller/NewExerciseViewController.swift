@@ -19,6 +19,7 @@ class NewExerciseViewController: UIViewController {
     
 
     // MARK: IBActions
+    @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var exerciseNameTextField: UITextField!
     @IBOutlet weak var goalWeightTextField: UITextField!
     @IBOutlet weak var goalSetTextField: UITextField!
@@ -38,6 +39,9 @@ class NewExerciseViewController: UIViewController {
             goalWeightTextField.text = String(savedExercise.goalRecordWeight)
             goalSetTextField.text = String(savedExercise.goalRecordSets)
             goalRepsTextField.text = String(savedExercise.goalRecordReps)
+            if let imageData = savedExercise.exerciseImage {
+                photoImageView.image = UIImage(data: imageData as Data)
+            }
         }
         
         //
@@ -65,19 +69,23 @@ class NewExerciseViewController: UIViewController {
                 savedExercise.goalRecordReps = Int16(goalRepsTextField.text!)!
                 savedExercise.goalRecordSets = Int16((goalSetTextField.text)!)!
                 savedExercise.goalRecordWeight = Int16(goalWeightTextField.text!)!
+                if let imageData = photoImageView.image?.pngData() as NSData? {
+                    savedExercise.exerciseImage = imageData
+                }
+
                 // save attributes
                 appDelegate.saveContext()
             } else {
                 // add new exercise
-                newExercise = IndividualExercise(groupName: nil ,exerciseName: exerciseNameTextField.text, goalRecordWeight: Int((goalWeightTextField.text)!), goalRecordSet: Int((goalSetTextField.text)!), goalRecordReps: Int(goalRepsTextField.text!))
+                newExercise = IndividualExercise(groupName: nil ,exerciseName: exerciseNameTextField.text, goalRecordWeight: Int((goalWeightTextField.text)!), goalRecordSet: Int((goalSetTextField.text)!), goalRecordReps: Int(goalRepsTextField.text!), exerciseImage: photoImageView.image)
             }
 
         } 
         
     }
     
-    // MARK: - methods
-    func updateSaveButtonState() {
+    // MARK: Private methods
+    private func updateSaveButtonState() {
         // if any text fields are empty, disable save button
         if (exerciseNameTextField.text?.isEmpty)! || (goalWeightTextField.text?.isEmpty)! || (goalSetTextField.text?.isEmpty)! || (goalRepsTextField.text?.isEmpty)! {
             saveButton.isEnabled = false
@@ -85,7 +93,6 @@ class NewExerciseViewController: UIViewController {
             saveButton.isEnabled = true
         }
     }
-    
 
 }
 
@@ -96,14 +103,52 @@ extension NewExerciseViewController: UITextFieldDelegate {
         navigationItem.title = exerciseNameTextField.text
         return true
     }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        print("editing ended")
-    }
-    
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        print("begin editing")
-        return true
-    }
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        print("editing ended")
+//    }
+//
+//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+//        print("begin editing")
+//        return true
+//    }
 
+}
+
+extension NewExerciseViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    // MARK: UIImagePickerControllerDelegate
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        // get original image from the info dictionary
+        guard let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+            fatalError("unable to load image from the dictionary")
+        }
+        
+        // display the image
+        photoImageView.image = pickedImage
+        
+        // save the image 
+        
+        // dismiss the picker
+        dismiss(animated: true, completion: nil) 
+    }
+    
+    // MARK: Actions
+    @IBAction func selectImage(_ sender: UITapGestureRecognizer) {
+        print("tap")
+        // view controller allows user to pick media from their photo library
+        let imagePickerController = UIImagePickerController()
+        
+        // only allow photos
+        imagePickerController.sourceType = .photoLibrary
+        
+        // present image picker view controller
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true, completion: nil)
+        
+    }
+    
 }

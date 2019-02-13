@@ -144,9 +144,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yBN-Hx-LpF">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="yBN-Hx-LpF">
                                 <rect key="frame" x="20" y="154" width="374" height="201"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="HXX-YC-mbD" appends="YES" id="GTx-2h-GKw"/>
+                                </connections>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sets" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I5L-th-JkN">
                                 <rect key="frame" x="20" y="455" width="374" height="30"/>
@@ -197,11 +201,17 @@
                         <outlet property="goalRepsTextField" destination="mBw-AE-joT" id="fVG-3y-sLm"/>
                         <outlet property="goalSetTextField" destination="I5L-th-JkN" id="W9S-Dy-u0x"/>
                         <outlet property="goalWeightTextField" destination="SKU-eT-u9s" id="g5t-PF-YUT"/>
+                        <outlet property="photoImageView" destination="yBN-Hx-LpF" id="e5f-k1-zLi"/>
                         <outlet property="saveButton" destination="elE-SA-Jsh" id="QKA-FW-maO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LXf-sG-nMg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Wvu-6d-0Wm" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="HXX-YC-mbD">
+                    <connections>
+                        <action selector="selectImage:" destination="nzz-l2-w1n" id="HFk-vG-j3z"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3258" y="-593"/>
         </scene>
@@ -327,6 +337,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="defaultPhoto" width="1080" height="1080"/>
         <image name="exercise off" width="32" height="32"/>
         <image name="workout off" width="32" height="32"/>
     </resources>
