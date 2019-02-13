@@ -154,16 +154,11 @@ extension IndividualExerciseTableViewController {
         }
     }
     
-    // filter exercises
+    // filter exercises - return exercises that belongs to the group
     func filter(group: String) {
         filteredExercises = exercises.filter { (ex) -> Bool in
             return (ex.groupName?.contains(group))!
         }
-    }
-    
-    // update check - check if this exercise already exists
-    func updateExercise() {
-        
     }
     
     // delete

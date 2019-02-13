@@ -128,7 +128,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Goal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1P-73-LnV">
                                 <rect key="frame" x="20" y="380" width="35" height="21"/>
@@ -197,6 +197,7 @@
                         <outlet property="goalRepsTextField" destination="mBw-AE-joT" id="fVG-3y-sLm"/>
                         <outlet property="goalSetTextField" destination="I5L-th-JkN" id="W9S-Dy-u0x"/>
                         <outlet property="goalWeightTextField" destination="SKU-eT-u9s" id="g5t-PF-YUT"/>
+                        <outlet property="saveButton" destination="elE-SA-Jsh" id="QKA-FW-maO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LXf-sG-nMg" userLabel="First Responder" sceneMemberID="firstResponder"/>

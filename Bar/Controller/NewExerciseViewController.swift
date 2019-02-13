@@ -24,6 +24,7 @@ class NewExerciseViewController: UIViewController {
     @IBOutlet weak var goalSetTextField: UITextField!
     @IBOutlet weak var goalRepsTextField: UITextField!
     
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,10 +39,14 @@ class NewExerciseViewController: UIViewController {
             goalSetTextField.text = String(savedExercise.goalRecordSets)
             goalRepsTextField.text = String(savedExercise.goalRecordReps)
         }
+        
+        //
+        updateSaveButtonState()
     }
     
     // removes keyboard when the area outside the textField is touched
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        updateSaveButtonState()
         self.view.endEditing(true)
     }
     
@@ -70,6 +75,17 @@ class NewExerciseViewController: UIViewController {
         } 
         
     }
+    
+    // MARK: - methods
+    func updateSaveButtonState() {
+        // if any text fields are empty, disable save button
+        if (exerciseNameTextField.text?.isEmpty)! || (goalWeightTextField.text?.isEmpty)! || (goalSetTextField.text?.isEmpty)! || (goalRepsTextField.text?.isEmpty)! {
+            saveButton.isEnabled = false
+        } else {
+            saveButton.isEnabled = true
+        }
+    }
+    
 
 }
 
@@ -77,18 +93,17 @@ extension NewExerciseViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        navigationItem.title = exerciseNameTextField.text
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print("editing ended")
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        print("begin editing")
         return true
     }
 
 }
-
-//var groupName: String?
-//var exerciseName: String?
-////    var exerciseImage: String?
-//
-////    var lastRecordWeight: Int
-////    var lastRecordSet: Int
-////    var lastRecordReps: Int
-//var goalRecordWeight: Int?
-//var goalRecordSet: Int?
-//var goalRecordReps: Int?
