@@ -82,6 +82,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="nzz-l2-w1n" kind="show" identifier="showNewExercise" id="o1w-dS-agV"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -199,7 +202,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LXf-sG-nMg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Wvu-6d-0Wm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3568.115942028986" y="-593.47826086956525"/>
+            <point key="canvasLocation" x="3258" y="-593"/>
         </scene>
         <!--Workout-->
         <scene sceneID="2Ez-YP-t4w">
@@ -319,11 +322,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pTA-LV-KEW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2793" y="-593"/>
+            <point key="canvasLocation" x="2616" y="-1114"/>
         </scene>
     </scenes>
     <resources>
         <image name="exercise off" width="32" height="32"/>
         <image name="workout off" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="o1w-dS-agV"/>
+    </inferredMetricsTieBreakers>
 </document>

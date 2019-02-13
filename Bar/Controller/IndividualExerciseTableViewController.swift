@@ -23,6 +23,7 @@ class IndividualExerciseTableViewController: UITableViewController {
     var selectedExerciseGroupName: String?
     var exercises = [ExerciseData]()
     var filteredExercises = [ExerciseData]()
+    var selected:IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,14 +69,31 @@ class IndividualExerciseTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     // passing the group of the new exercise that will be added
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        // Get the new view controller using segue.destination.
-//        // Pass the selected object to the new view controller.
-//        if let destination = segue.destination as? NewExerciseViewController {
-//            destination.newExercise?.groupName = selectedExerciseGroupName
-//        }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+
+        if segue.identifier == "showNewExercise" {
+            // present exercise from saved data
+            print("segue identifier matched: showNewExercise")
+            
+//            guard let selectedExerciseCell = sender as? UITableViewCell else {
+//                return
+//            }
 //
-//    }
+//            guard let indexPath = tableView.indexPath(for: selectedExerciseCell) else {
+//                return
+//            }
+            
+            guard let indexPath = tableView.indexPathForSelectedRow else {return}
+            
+            if let destination = segue.destination as? NewExerciseViewController {
+                print("segue destination matched")
+                destination.savedExercise = filteredExercises[indexPath.row]
+            }
+        }
+        
+    }
 
 }
 
@@ -86,7 +104,12 @@ extension IndividualExerciseTableViewController {
     
     @IBAction func saveNewExercise(_ segue: UIStoryboardSegue) {
         guard let newExerciseViewController = segue.source as? NewExerciseViewController,
-            var newExercise = newExerciseViewController.newExercise else { return }
+            var newExercise = newExerciseViewController.newExercise
+            else {
+                // exercise data is edited - reload the table
+                tableView.reloadData()
+                return
+        }
         
         // set the group name of the exercise
         newExercise.groupName = selectedExerciseGroupName
@@ -136,5 +159,15 @@ extension IndividualExerciseTableViewController {
         filteredExercises = exercises.filter { (ex) -> Bool in
             return (ex.groupName?.contains(group))!
         }
+    }
+    
+    // update check - check if this exercise already exists
+    func updateExercise() {
+        
+    }
+    
+    // delete
+    func deleteExercise (exercise: ExerciseData) {
+        managedObjContext.delete(exercise)
     }
 }
