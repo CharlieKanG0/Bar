@@ -13,6 +13,7 @@
 		2239CA9922113D38005F5C37 /* ExerciseData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2239CA9722113D38005F5C37 /* ExerciseData+CoreDataClass.swift */; };
 		22698B64220AB5E0001AE45E /* NewExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22698B63220AB5E0001AE45E /* NewExerciseViewController.swift */; };
 		22834F612213E3770042DD49 /* ExerciseData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22834F602213E3770042DD49 /* ExerciseData+CoreDataProperties.swift */; };
+		22834F632214FF1F0042DD49 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22834F622214FF1F0042DD49 /* UITextField+Extensions.swift */; };
 		22BACC7F2207F5E800973987 /* ExercisesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BACC7E2207F5E800973987 /* ExercisesTableViewController.swift */; };
 		22BACC852207FC9D00973987 /* ExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BACC842207FC9D00973987 /* ExerciseTableViewCell.swift */; };
 		22BACC872208067B00973987 /* defaultExerciseGroupList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BACC862208067B00973987 /* defaultExerciseGroupList.swift */; };
@@ -51,6 +52,7 @@
 		2239CA9722113D38005F5C37 /* ExerciseData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciseData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		22698B63220AB5E0001AE45E /* NewExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExerciseViewController.swift; sourceTree = "<group>"; };
 		22834F602213E3770042DD49 /* ExerciseData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciseData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		22834F622214FF1F0042DD49 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		22BACC7E2207F5E800973987 /* ExercisesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesTableViewController.swift; sourceTree = "<group>"; };
 		22BACC842207FC9D00973987 /* ExerciseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewCell.swift; sourceTree = "<group>"; };
 		22BACC862208067B00973987 /* defaultExerciseGroupList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = defaultExerciseGroupList.swift; sourceTree = "<group>"; };
@@ -105,6 +107,14 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		22834F642214FF2B0042DD49 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				22834F622214FF1F0042DD49 /* UITextField+Extensions.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		22E470AD2206CB2D00C23646 = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +145,7 @@
 				22E470EB2206CB6B00C23646 /* Controller */,
 				22E470EA2206CB5D00C23646 /* View */,
 				22E470C82206CB2E00C23646 /* Info.plist */,
+				22834F642214FF2B0042DD49 /* Extension */,
 			);
 			path = Bar;
 			sourceTree = "<group>";
@@ -328,6 +339,7 @@
 				22BACC7F2207F5E800973987 /* ExercisesTableViewController.swift in Sources */,
 				22834F612213E3770042DD49 /* ExerciseData+CoreDataProperties.swift in Sources */,
 				22BACC872208067B00973987 /* defaultExerciseGroupList.swift in Sources */,
+				22834F632214FF1F0042DD49 /* UITextField+Extensions.swift in Sources */,
 				2239CA9922113D38005F5C37 /* ExerciseData+CoreDataClass.swift in Sources */,
 				221316732209074300E626E9 /* sampleLegExercises.swift in Sources */,
 				22BACC8B22084A2D00973987 /* WorkoutTableViewController.swift in Sources */,
