@@ -35,6 +35,7 @@ class NewExerciseViewController: UIViewController {
         goalWeightTextField.delegate = self
         goalSetTextField.delegate = self
         goalRepsTextField.delegate = self
+        noteTextField.delegate = self
         
         // load the view with the saved exercise data
         if let savedExercise = savedExercise {
@@ -110,22 +111,17 @@ extension NewExerciseViewController: UITextFieldDelegate {
         return true 
     }
     
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        print("should end editing")
-        return true
-    }
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
         print("did end editing")
         print(textField.tag)
         
         let currentTag = textField.tag
         
-        if currentTag != 0 {
-            if let nextResponder = textField.superview?.superview?.viewWithTag(currentTag+1) {
-                nextResponder.becomeFirstResponder()
-            }
+        if let nextResponder = view.viewWithTag(currentTag+1) {
+            nextResponder.becomeFirstResponder()
         }
+        
+        updateSaveButtonState()
     }
 
 }
