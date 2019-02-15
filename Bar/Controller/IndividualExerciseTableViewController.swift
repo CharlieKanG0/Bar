@@ -61,6 +61,23 @@ class IndividualExerciseTableViewController: UITableViewController {
         cell.textLabel?.text = individualExercises.value(forKey: "exerciseName") as? String
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            // get the object to delete
+            let exerciseToDelete = filteredExercises[indexPath.row]
+            // delete from the managed context
+            managedObjContext.delete(exerciseToDelete)
+            // save
+            appDelegate.saveContext()
+            
+            // delete exercise from the array
+            filteredExercises.remove(at: indexPath.row)
+            // delete table row
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
         
     }
 
