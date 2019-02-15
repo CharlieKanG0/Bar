@@ -3,6 +3,7 @@
     <entity name="ExerciseData" representedClassName="ExerciseData" syncable="YES">
         <attribute name="exerciseImage" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="exerciseName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exerciseNote" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="goalRecordReps" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="goalRecordSets" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="goalRecordWeight" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -12,6 +13,6 @@
         <attribute name="lastRecordWeight" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ExerciseData" positionX="-63" positionY="-18" width="128" height="180"/>
+        <element name="ExerciseData" positionX="-63" positionY="-18" width="128" height="195"/>
     </elements>
 </model>

@@ -261,6 +261,7 @@
                         <outlet property="goalRepsTextField" destination="mBw-AE-joT" id="fVG-3y-sLm"/>
                         <outlet property="goalSetTextField" destination="I5L-th-JkN" id="W9S-Dy-u0x"/>
                         <outlet property="goalWeightTextField" destination="SKU-eT-u9s" id="g5t-PF-YUT"/>
+                        <outlet property="noteTextField" destination="QTp-BB-cYq" id="MWT-YF-8JH"/>
                         <outlet property="photoImageView" destination="yBN-Hx-LpF" id="e5f-k1-zLi"/>
                         <outlet property="saveButton" destination="elE-SA-Jsh" id="QKA-FW-maO"/>
                     </connections>

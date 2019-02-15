@@ -24,6 +24,7 @@ class NewExerciseViewController: UIViewController {
     @IBOutlet weak var goalWeightTextField: UITextField!
     @IBOutlet weak var goalSetTextField: UITextField!
     @IBOutlet weak var goalRepsTextField: UITextField!
+    @IBOutlet weak var noteTextField: UITextField!
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
@@ -45,6 +46,7 @@ class NewExerciseViewController: UIViewController {
             if let imageData = savedExercise.exerciseImage {
                 photoImageView.image = UIImage(data: imageData as Data)
             }
+            noteTextField.text = savedExercise.exerciseNote
         }
         
         //
@@ -75,12 +77,13 @@ class NewExerciseViewController: UIViewController {
                 if let imageData = photoImageView.image?.pngData() as NSData? {
                     savedExercise.exerciseImage = imageData
                 }
+                savedExercise.exerciseNote = noteTextField.text
 
                 // save attributes
                 appDelegate.saveContext()
             } else {
                 // add new exercise
-                newExercise = IndividualExercise(groupName: nil ,exerciseName: exerciseNameTextField.text, goalRecordWeight: Int((goalWeightTextField.text)!), goalRecordSet: Int((goalSetTextField.text)!), goalRecordReps: Int(goalRepsTextField.text!), exerciseImage: photoImageView.image)
+                newExercise = IndividualExercise(groupName: nil ,exerciseName: exerciseNameTextField.text, goalRecordWeight: Int((goalWeightTextField.text)!), goalRecordSet: Int((goalSetTextField.text)!), goalRecordReps: Int(goalRepsTextField.text!), exerciseImage: photoImageView.image, exerciseNote: noteTextField.text)
             }
 
         } 

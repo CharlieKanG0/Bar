@@ -26,5 +26,6 @@ extension ExerciseData {
     @NSManaged public var lastRecordSets: Int16
     @NSManaged public var lastRecordWeight: Int16
     @NSManaged public var exerciseImage: NSData?
+    @NSManaged public var exerciseNote: String?
 
 }

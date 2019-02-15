@@ -148,6 +148,7 @@ extension IndividualExerciseTableViewController {
         
         exerciseData.groupName = exercise.groupName
         exerciseData.exerciseName = exercise.exerciseName
+        exerciseData.exerciseNote = exercise.exerciseNote
         exerciseData.goalRecordReps = Int16(exercise.goalRecordReps!)
         exerciseData.goalRecordSets = Int16(exercise.goalRecordSet!)
         exerciseData.goalRecordWeight = Int16(exercise.goalRecordWeight!)

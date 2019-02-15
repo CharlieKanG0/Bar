@@ -22,5 +22,6 @@ struct IndividualExercise {
     var goalRecordSet: Int?
     var goalRecordReps: Int?
     var exerciseImage: UIImage?
+    var exerciseNote: String? 
 }
 
