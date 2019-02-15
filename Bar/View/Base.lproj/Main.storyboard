@@ -273,7 +273,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3257.971014492754" y="-593.47826086956525"/>
+            <point key="canvasLocation" x="3512" y="-593"/>
         </scene>
         <!--Workout-->
         <scene sceneID="2Ez-YP-t4w">
@@ -307,7 +307,13 @@
                             <outlet property="delegate" destination="Pqg-9y-rb1" id="ls3-uZ-NWg"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Workout" id="NvU-AY-saY"/>
+                    <navigationItem key="navigationItem" title="Workout" id="NvU-AY-saY">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="c1B-QD-Csa">
+                            <connections>
+                                <segue destination="bnF-mm-8NO" kind="show" id="uPk-Vn-cQg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="754-3V-Pf8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -393,7 +399,53 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pTA-LV-KEW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2616" y="-1114"/>
+            <point key="canvasLocation" x="2739" y="-892"/>
+        </scene>
+        <!--Exercises-->
+        <scene sceneID="cFR-50-GVN">
+            <objects>
+                <tableViewController id="bnF-mm-8NO" customClass="ExercisesTableViewController" customModule="Bar" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Pk4-mh-FCh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ExerciseCell" id="jaH-uC-hkH" customClass="ExerciseTableViewCell" customModule="Bar" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jaH-uC-hkH" id="7ZN-h9-rq6">
+                                    <rect key="frame" x="0.0" y="0.0" width="376" height="79.666666666666671"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T3Q-AQ-JXm">
+                                            <rect key="frame" x="20" y="0.0" width="80" height="80"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Exercise 1" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="McQ-5a-VI4">
+                                            <rect key="frame" x="228" y="22" width="140" height="35"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="exerciseImageView" destination="T3Q-AQ-JXm" id="VHI-11-Sgo"/>
+                                    <outlet property="exerciseLabel" destination="McQ-5a-VI4" id="bRT-fu-JSn"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="bnF-mm-8NO" id="WUW-W6-pjJ"/>
+                            <outlet property="delegate" destination="bnF-mm-8NO" id="6f8-8P-S41"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Exercises" id="J2e-mc-3fD"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6dn-yE-eOh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2420" y="152"/>
         </scene>
     </scenes>
     <resources>
