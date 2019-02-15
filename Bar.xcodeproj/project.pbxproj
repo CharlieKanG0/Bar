@@ -11,6 +11,7 @@
 		2213167522090A7E00E626E9 /* IndividualExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2213167422090A7E00E626E9 /* IndividualExercise.swift */; };
 		2213167722091BA100E626E9 /* IndividualExerciseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2213167622091BA100E626E9 /* IndividualExerciseTableViewController.swift */; };
 		2239CA9922113D38005F5C37 /* ExerciseData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2239CA9722113D38005F5C37 /* ExerciseData+CoreDataClass.swift */; };
+		2256645F22167B1500E5F7BD /* IndividualExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2256645E22167B1500E5F7BD /* IndividualExerciseTableViewCell.swift */; };
 		22698B64220AB5E0001AE45E /* NewExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22698B63220AB5E0001AE45E /* NewExerciseViewController.swift */; };
 		22834F612213E3770042DD49 /* ExerciseData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22834F602213E3770042DD49 /* ExerciseData+CoreDataProperties.swift */; };
 		22834F632214FF1F0042DD49 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22834F622214FF1F0042DD49 /* UITextField+Extensions.swift */; };
@@ -50,6 +51,7 @@
 		2213167422090A7E00E626E9 /* IndividualExercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualExercise.swift; sourceTree = "<group>"; };
 		2213167622091BA100E626E9 /* IndividualExerciseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualExerciseTableViewController.swift; sourceTree = "<group>"; };
 		2239CA9722113D38005F5C37 /* ExerciseData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciseData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2256645E22167B1500E5F7BD /* IndividualExerciseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualExerciseTableViewCell.swift; sourceTree = "<group>"; };
 		22698B63220AB5E0001AE45E /* NewExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExerciseViewController.swift; sourceTree = "<group>"; };
 		22834F602213E3770042DD49 /* ExerciseData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciseData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		22834F622214FF1F0042DD49 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
@@ -115,6 +117,15 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		2297B2782216828700605874 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				22BACC842207FC9D00973987 /* ExerciseTableViewCell.swift */,
+				2256645E22167B1500E5F7BD /* IndividualExerciseTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		22E470AD2206CB2D00C23646 = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +154,7 @@
 				2239CA9222113A34005F5C37 /* Data */,
 				22E470EC2206CB7500C23646 /* Model */,
 				22E470EB2206CB6B00C23646 /* Controller */,
+				2297B2782216828700605874 /* Cells */,
 				22E470EA2206CB5D00C23646 /* View */,
 				22E470C82206CB2E00C23646 /* Info.plist */,
 				22834F642214FF2B0042DD49 /* Extension */,
@@ -171,7 +183,6 @@
 		22E470EA2206CB5D00C23646 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				22BACC842207FC9D00973987 /* ExerciseTableViewCell.swift */,
 				22E470BD2206CB2D00C23646 /* Main.storyboard */,
 				22E470C52206CB2E00C23646 /* LaunchScreen.storyboard */,
 			);
@@ -346,6 +357,7 @@
 				2213167722091BA100E626E9 /* IndividualExerciseTableViewController.swift in Sources */,
 				2213167522090A7E00E626E9 /* IndividualExercise.swift in Sources */,
 				22698B64220AB5E0001AE45E /* NewExerciseViewController.swift in Sources */,
+				2256645F22167B1500E5F7BD /* IndividualExerciseTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

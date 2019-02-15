@@ -75,9 +75,13 @@ class NewExerciseViewController: UIViewController {
                 savedExercise.goalRecordReps = Int16(goalRepsTextField.text!)!
                 savedExercise.goalRecordSets = Int16((goalSetTextField.text)!)!
                 savedExercise.goalRecordWeight = Int16(goalWeightTextField.text!)!
-                if let imageData = photoImageView.image?.pngData() as NSData? {
+                if let imageData = photoImageView.image?.jpegData(compressionQuality: 0.5) as NSData? {
                     savedExercise.exerciseImage = imageData
                 }
+                
+//                if let imageData = photoImageView.image?.pngData() as NSData? {
+//                    savedExercise.exerciseImage = imageData
+//                }
                 savedExercise.exerciseNote = noteTextField.text
 
                 // save attributes
@@ -112,8 +116,6 @@ extension NewExerciseViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print("did end editing")
-        print(textField.tag)
         
         let currentTag = textField.tag
         
@@ -141,6 +143,7 @@ extension NewExerciseViewController: UIImagePickerControllerDelegate, UINavigati
         
         // display the image
         photoImageView.image = pickedImage
+
         
         // save the image 
         
@@ -150,7 +153,6 @@ extension NewExerciseViewController: UIImagePickerControllerDelegate, UINavigati
     
     // MARK: Actions
     @IBAction func selectImage(_ sender: UITapGestureRecognizer) {
-        print("tap")
         // view controller allows user to pick media from their photo library
         let imagePickerController = UIImagePickerController()
         

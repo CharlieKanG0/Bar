@@ -53,12 +53,13 @@ class IndividualExerciseTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellId = "IndividualExerciseCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! IndividualExerciseTableViewCell
 
         // Configure the cell...
         let individualExercises = filteredExercises[indexPath.row]
+        cell.setIndividualExerciseCell(exerciseData: individualExercises)
         
-        cell.textLabel?.text = individualExercises.value(forKey: "exerciseName") as? String
+        //cell.textLabel?.text = individualExercises.value(forKey: "exerciseName") as? String
 
         return cell
     }
@@ -92,7 +93,6 @@ class IndividualExerciseTableViewController: UITableViewController {
 
         if segue.identifier == "showNewExercise" {
             // present exercise from saved data
-            print("segue identifier matched: showNewExercise")
             
 //            guard let selectedExerciseCell = sender as? UITableViewCell else {
 //                return
@@ -105,7 +105,6 @@ class IndividualExerciseTableViewController: UITableViewController {
             guard let indexPath = tableView.indexPathForSelectedRow else {return}
             
             if let destination = segue.destination as? NewExerciseViewController {
-                print("segue destination matched")
                 destination.savedExercise = filteredExercises[indexPath.row]
             }
         }
@@ -152,7 +151,10 @@ extension IndividualExerciseTableViewController {
         exerciseData.goalRecordReps = Int16(exercise.goalRecordReps!)
         exerciseData.goalRecordSets = Int16(exercise.goalRecordSet!)
         exerciseData.goalRecordWeight = Int16(exercise.goalRecordWeight!)
-        if let imageData = exercise.exerciseImage?.pngData() as NSData? {
+//        if let imageData = exercise.exerciseImage?.pngData() as NSData? {
+//            exerciseData.exerciseImage = imageData
+//        }
+        if let imageData = exercise.exerciseImage?.jpegData(compressionQuality: 0.5) as NSData? {
             exerciseData.exerciseImage = imageData
         }
         
