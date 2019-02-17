@@ -40,6 +40,11 @@ class IndividualExerciseTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
+    
+//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        let cellSpacingHeight:CGFloat = 20
+//        return cellSpacingHeight
+//    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -59,7 +64,11 @@ class IndividualExerciseTableViewController: UITableViewController {
         let individualExercises = filteredExercises[indexPath.row]
         cell.setIndividualExerciseCell(exerciseData: individualExercises)
         
-        //cell.textLabel?.text = individualExercises.value(forKey: "exerciseName") as? String
+        // Configure cell design
+        cell.layer.borderWidth = 12
+        cell.layer.cornerRadius = 24
+        cell.layer.borderColor = tableView.backgroundColor?.cgColor
+        //cell.backgroundColor = UIColor.clear
 
         return cell
     }
@@ -151,9 +160,6 @@ extension IndividualExerciseTableViewController {
         exerciseData.goalRecordReps = Int16(exercise.goalRecordReps!)
         exerciseData.goalRecordSets = Int16(exercise.goalRecordSet!)
         exerciseData.goalRecordWeight = Int16(exercise.goalRecordWeight!)
-//        if let imageData = exercise.exerciseImage?.pngData() as NSData? {
-//            exerciseData.exerciseImage = imageData
-//        }
         if let imageData = exercise.exerciseImage?.jpegData(compressionQuality: 0.5) as NSData? {
             exerciseData.exerciseImage = imageData
         }

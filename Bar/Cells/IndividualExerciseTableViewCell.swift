@@ -21,8 +21,13 @@ class IndividualExerciseTableViewCell: UITableViewCell {
         if let image = exerciseData.exerciseImage {
             exerciseImageView.image = UIImage(data: image as Data)
         }
-        goalRecordLabel.text = String(exerciseData.goalRecordWeight) + " Kg X " + String(exerciseData.goalRecordSets) + " Sets X " + String(exerciseData.goalRecordReps) + " Reps"
-        noteLabel.text = exerciseData.exerciseNote
+        goalRecordLabel.text = String(exerciseData.goalRecordWeight) + "kg | " + String(exerciseData.goalRecordSets) + " X " + String(exerciseData.goalRecordReps)
+        //noteLabel.text = exerciseData.exerciseNote
 
     }
+    
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16))
+//    }
 }

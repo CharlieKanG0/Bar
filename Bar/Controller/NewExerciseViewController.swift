@@ -78,10 +78,7 @@ class NewExerciseViewController: UIViewController {
                 if let imageData = photoImageView.image?.jpegData(compressionQuality: 0.5) as NSData? {
                     savedExercise.exerciseImage = imageData
                 }
-                
-//                if let imageData = photoImageView.image?.pngData() as NSData? {
-//                    savedExercise.exerciseImage = imageData
-//                }
+
                 savedExercise.exerciseNote = noteTextField.text
 
                 // save attributes
