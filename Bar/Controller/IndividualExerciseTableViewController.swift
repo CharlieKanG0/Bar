@@ -21,7 +21,9 @@ class IndividualExerciseTableViewController: UITableViewController {
     
     // value passed from ExerciseTableViewController 
     var selectedExerciseGroupName: String?
+    // array to store all the exercises
     var exercises = [ExerciseData]()
+    // array to store exercises that belongs to the current exercise group (body parts)
     var filteredExercises = [ExerciseData]()
     var selected:IndexPath?
     
@@ -40,11 +42,6 @@ class IndividualExerciseTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-    
-//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        let cellSpacingHeight:CGFloat = 20
-//        return cellSpacingHeight
-//    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -60,7 +57,7 @@ class IndividualExerciseTableViewController: UITableViewController {
         let cellId = "IndividualExerciseCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! IndividualExerciseTableViewCell
 
-        // Configure the cell...
+        // show exercises that belongs to the selected group
         let individualExercises = filteredExercises[indexPath.row]
         cell.setIndividualExerciseCell(exerciseData: individualExercises)
         
@@ -73,6 +70,7 @@ class IndividualExerciseTableViewController: UITableViewController {
         return cell
     }
     
+    // Tableview swipe delete
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == UITableViewCell.EditingStyle.delete {
@@ -172,7 +170,7 @@ extension IndividualExerciseTableViewController {
         
     }
     
-    // fetch data - refresh the individual exercise table view
+    // fetch data - refresh the exercises data array to load all the saved exercises
     func refresh() {
         let fetchRequest = ExerciseData.fetchRequest() as NSFetchRequest<ExerciseData>
         
@@ -189,9 +187,5 @@ extension IndividualExerciseTableViewController {
             return (ex.groupName?.contains(group))!
         }
     }
-    
-    // delete
-    func deleteExercise (exercise: ExerciseData) {
-        managedObjContext.delete(exercise)
-    }
+
 }

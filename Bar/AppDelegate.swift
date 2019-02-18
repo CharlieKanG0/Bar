@@ -18,13 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        // navigation bar item
+        // navigation bar
         var navigationBarAppearance = UINavigationBar.appearance()
         navigationBarAppearance.barTintColor = UIColorFromHex(rgbValue: 0x222831)
         navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         
+        // tab bar
         var tabBarAppearance = UITabBar.appearance()
         tabBarAppearance.barTintColor = UIColorFromHex(rgbValue: 0x222831)
+        
+        // navigation item
+        navigationBarAppearance.tintColor = UIColorFromHex(rgbValue: 0x00ADB5)
         
         return true
     }
