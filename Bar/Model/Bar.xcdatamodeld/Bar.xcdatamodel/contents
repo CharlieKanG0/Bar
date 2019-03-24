@@ -11,8 +11,14 @@
         <attribute name="lastRecordReps" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="lastRecordSets" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="lastRecordWeight" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="workouts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WorkoutData" inverseName="exercises" inverseEntity="WorkoutData" syncable="YES"/>
+    </entity>
+    <entity name="WorkoutData" representedClassName="WorkoutData" syncable="YES">
+        <attribute name="workoutName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="exercises" toMany="YES" deletionRule="Nullify" destinationEntity="ExerciseData" inverseName="workouts" inverseEntity="ExerciseData" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ExerciseData" positionX="-63" positionY="-18" width="128" height="195"/>
+        <element name="ExerciseData" positionX="-406.30859375" positionY="95.625" width="128" height="210"/>
+        <element name="WorkoutData" positionX="-63" positionY="54" width="128" height="75"/>
     </elements>
 </model>

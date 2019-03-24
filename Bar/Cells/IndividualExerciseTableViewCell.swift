@@ -22,6 +22,8 @@ class IndividualExerciseTableViewCell: UITableViewCell {
             exerciseImageView.image = UIImage(data: image as Data)
         }
         goalRecordLabel.text = String(exerciseData.goalRecordWeight) + "kg | " + String(exerciseData.goalRecordSets) + " X " + String(exerciseData.goalRecordReps)
+        
+        lastRecordLabel.text = String(exerciseData.lastRecordWeight) + "kg | " + String(exerciseData.lastRecordSets) + " X " + String(exerciseData.lastRecordReps)
         //noteLabel.text = exerciseData.exerciseNote
 
     }

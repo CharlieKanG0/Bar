@@ -18,7 +18,7 @@ class NewExerciseViewController: UIViewController {
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
 
-    // MARK: IBActions
+    // MARK: IBOutlets
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var exerciseNameTextField: UITextField!
     @IBOutlet weak var goalWeightTextField: UITextField!

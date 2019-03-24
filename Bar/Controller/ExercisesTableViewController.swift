@@ -12,6 +12,9 @@ class ExercisesTableViewController: UITableViewController {
     
     // MARK: Properties
     var exerciseGroup = defaultExerciseGroupList.generateExercisesData()
+    
+    // workout data
+    var workout:WorkoutData? 
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +62,21 @@ class ExercisesTableViewController: UITableViewController {
             destination.selectedExerciseGroupName = exerciseGroup[indexPath.row].exerciseGroupName
             //destination.selectedExerciseGroup = exerciseGroup[indexPath.row] 
         }
+        
+        if let destination = segue.destination as? AddExerciseToWorkoutTableViewController {
+            destination.workout = workout 
+        }
 
     }
+    
+    
+    
+    // experiment
+//    override func didMove(toParent parent: UIViewController?) {
+//        if (parent?.isEqual(IndividualWorkoutEditViewController.self))! {
+//            print("back pressed")
+//        } else {
+//            print("back not pressed")
+//        }
+//    }
 }

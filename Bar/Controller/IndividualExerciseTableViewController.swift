@@ -116,6 +116,8 @@ class IndividualExerciseTableViewController: UITableViewController {
             }
         }
         
+        
+        
     }
 
 }
@@ -182,6 +184,7 @@ extension IndividualExerciseTableViewController {
     }
     
     // filter exercises - return exercises that belongs to the group
+    // or can use predicate
     func filter(group: String) {
         filteredExercises = exercises.filter { (ex) -> Bool in
             return (ex.groupName?.contains(group))!

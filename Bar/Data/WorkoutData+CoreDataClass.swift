@@ -1,5 +1,5 @@
 //
-//  ExerciseData+CoreDataClass.swift
+//  WorkoutData+CoreDataClass.swift
 //  Bar
 //
 //  Created by Charlie Kang on 18/2/19.
@@ -10,7 +10,7 @@
 import Foundation
 import CoreData
 
-@objc(ExerciseData)
-public class ExerciseData: NSManagedObject {
+@objc(WorkoutData)
+public class WorkoutData: NSManagedObject {
 
 }
